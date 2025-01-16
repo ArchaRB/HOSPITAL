@@ -1,0 +1,34 @@
+{% extends 'doctor/doctorlogin.html' %}
+{% load static %}
+{% block content %}
+   
+     
+
+       
+        <table class="table table-striped">
+         <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Date</th>
+              <th scope="col">Time</th>
+              <th scope="col">message</th>
+              <th scope="col">Status</th>
+              <th scope="col">Remove</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for i in appointments %}
+            <tr>
+              <th scope="row">{{i.name}}</th>
+              <td>{{i.date}}</td>
+              <td>{{i.time}}</td>
+              <td>{{i.message}}</td>
+              <td><a href="{% url 'doctor:update_status_of_patient' i.id %}" type="submit" class="btn btn-outline-dark">{{i.status}}</a></td>
+              <td><a href="{% url 'doctor:remove_apponitment' i.id %}" class="btn btn-light">Remove</a></td>
+            </tr>
+          {% endfor %}
+
+          </tbody>
+       </table>
+
+{% endblock %}

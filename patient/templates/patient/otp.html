@@ -1,0 +1,35 @@
+{% extends 'patient/home.html' %}
+{% block content %} 
+<div class="row otp-row" style="background-color: rgb(205, 242, 243);">
+    <div class="col-4"></div>
+    <div class="col-4 otpcol">
+        <h2 style="color: black;">Enter OTP</h2>
+        <form method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="otp" class="form-label" style="color: black;">OTP</label>
+                <input type="text" class="form-control" name="otp" placeholder="Enter OTP">
+            </div>
+            <button type="submit" class="btn btn-primary">Verify OTP</button>
+        </form>
+        <p>Didn't receive the OTP? <a href="{% url 'patient:resend' %}">Resend OTP</a></p>
+
+        {% if msg %}
+            <div class="alert alert-danger" role="alert">
+                {{ msg }}
+            </div>
+        {% endif %}
+    </div>
+    <div class="col-4"></div>
+</div>
+<br><br><br><br>
+{% endblock %}
+
+<!-- <form method="POST">
+    <input type="text" name="otp" placeholder="Enter OTP">
+    <button type="submit">Verify OTP</button>
+</form>
+
+<p>Didn't receive the OTP? <a href="{% url 'resend_otp' %}">Resend OTP</a></p>
+
+

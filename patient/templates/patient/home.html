@@ -1,0 +1,503 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amritha Hospitals</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Raleway&display=swap" rel="stylesheet">
+    <style>
+
+    .display-4 {
+        font-family: "Raleway", serif;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+    }
+            .gallery-container {
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        width: 100%; /* Ensure it takes full width */
+    }
+    .gallery {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none; /* Hide scrollbar */
+    }
+    .gallery::-webkit-scrollbar {
+        display: none; /* Hide scrollbar for WebKit browsers */
+    }
+    .gallery-item {
+        flex: 0 0 45%; /* Show only 3 items at a time */
+        max-width: 45%; /* Show only 3 items at a time */
+        text-align: center;
+        margin: 10px;
+        scroll-snap-align: start;
+    }
+    .gallery-item img {
+        width: 100%;
+        height: auto;
+        transition: transform 0.2s ease;
+    }
+    .arrow {
+        cursor: pointer;
+        font-size: 2em;
+        user-select: none;
+        transition: color 0.2s;
+    }
+
+    </style>
+</head>
+<body class="body">
+    <div class="container-fluid">
+        <!-- navbar -->
+        <div class="row">
+            <div class="col-12">
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light " >
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#"><img src="{% static 'images/AMRITA HOSPITALS logo.png' %}" alt="" style="height: 100px; width: 100px;"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCombined" aria-controls="navbarCombined" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCombined" style="font-weight: 500;">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'patient:home' %}" style=" font-size: 15px;">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'patient:aboutus' %}" style="font-size: 15px;">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'patient:contactus' %}" style="font-size: 15px;">Contact Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'patient:doctors' %}" style="font-size: 15px;">Find a Doctor</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" style="font-size: 15px;">Our Departments</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'patient:list' %}" style="font-size: 15px;">Booking Confirmation</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'patient:login' %}" style="font-size: 15px;">Patient Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'patient:logout' %}" style="font-size: 15px;">Patient Logout</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'doctor:doctorlogin' %}" style="font-size: 15px; margin-top:10px;color: rgb(75, 73, 73);">Doctors Login</a>
+                </li>
+                <li class="nav-item">
+                    
+                     <button class="custom-btn"><a class="nav-link" href="{% url 'patient:booking' %}" style="font-weight: 700; font-size: 15px;">Book Appointment</a></button>
+                </li>
+            </ul>
+        </div>
+</nav>
+<!-- <div class="appointment-container" style="display: flex; justify-content: flex-end;"> 
+    <button class="custom-btn"><a class="nav-link" href="{% url 'patient:booking' %}" style=" font-weight: 700;color: black;">Book Appointment</a></button>
+</div> -->
+</div>
+</div>
+{% block content %}
+ <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="{% static 'images/hero1.jpeg' %}" class="d-block w-100" alt="...">
+            <div class="carousel-caption" >
+                <p class="display-4">25 Years Of Doing The Impossible</p>
+                <a href="#" class="btn-lg " style="color: white;"><i class="fas fa-arrow-right" style="color: #aaafe7;; margin-left: 250px;"></i>Learn more</a>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="{% static 'images/hero2.jpeg' %}" class="d-block w-100" alt="...">
+            <div class="carousel-caption" >
+                <p class="display-4">The Healthcare You Can Trust</p>
+                <a href="#" class="btn-lg " style="color: white;"><i class="fas fa-arrow-right" style="color: #aaafe7;; margin-left: 250px;"></i>Learn more</a>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="{% static 'images/hero3.jpeg' %}" class="d-block w-100" alt="...">
+            <div class="carousel-caption" >
+                <p class="display-4">Making A Connection Between Happiness And Health</p>
+                <a href="#" class="btn-lg " style="color: white;"><i class="fas fa-arrow-right" style="color: #aaafe7;; margin-left: 250px;"></i>Learn more</a>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="{% static 'images/hero4.jpeg' %}" class="d-block w-100" alt="...">
+            <div class="carousel-caption" >
+                <p class="display-4">Trasforming Life With Better Health</p>
+                <a href="#" class="btn-lg " style="color: white;"><i class="fas fa-arrow-right" style="color: #aaafe7;; margin-left: 250px;"></i>Learn more</a>
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+<br><br><br><br>
+
+
+
+
+        <!-- navbar end -->
+<!-- aboutus -->
+     <div class="row " style="background-color: white;"> 
+        <div class="container-fluid " > 
+            <div class="row"> 
+                <div class="col-lg-6 col-md-6 col-sm-12 custome-div d-flex flex-column justify-content-center " style="background-color: white;"> 
+                    <h1 style="font-size: 20px; font-weight: 600; color: black;">Why Amrita Hospital? </h1> <br><br>
+                    <h2 style="font-size: 37px; font-weight: 330;  color: black;">Our team of experts provides top-notch medical treatment with empathy using the most advanced 
+                        technology.</h2>
+
+                </div> 
+                <div class="col-lg-6 col-md-6 col-sm-12 custome-div d-flex flex-column justify-content-center " style="background-color: white;"> 
+                    <p style="font-size: 20px; font-weight: 330;  color: black;">Your health is our priority. Amrita Hospital ensures you and your family receive the best possible 
+                        medical care and assistance. We strive to create a warm and safe healing environment for you and your 
+                        family. Over the past decade, Amrita has been unflinchingly devoted to improving healthcare and treatment. 
+                        Medical specialists have been working diligently to conduct research and educate future generations of doctors 
+                        and healthcare workers.                       
+                    </p>
+                    <p style="font-size: 20px; font-weight: 330;  color: black; margin-top: -10px;">As our entire team works toward your speedy recovery, we utilize highly-trained doctors and 
+                        cutting-edge technology in the field of medical science</p></p>
+
+                    <a href="#" style="color: black; font-size: 17px; font-weight: 400; margin-left: 20px;">Learn more about us</a>
+                </div> 
+            </div>    
+        </div>
+    </div><br><br> 
+<!-- about us end -->
+
+<div class="row">
+    <div class="col-12 doctors">
+        <h2>Our Doctors</h2>
+    </div>
+</div>
+    <div class="container center-container" >
+        <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6 col-sm-12 doctor-card">
+                <img src="{% static 'images/dr1.jpg' %}" alt="Doctor 1">
+                <h5>Dr. John Doe</h5>
+                <p>Cardiologist</p>
+                <p>Experience: 15 years</p>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 doctor-card">
+                <img src="{% static 'images/dr2.jpeg' %}" alt="Doctor 2">
+                <h5>Dr. Jane Smith</h5>
+                <p>Neurologist</p>
+                <p>Experience: 12 years</p>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 doctor-card">
+                <img src="{% static 'images/dr3.jpeg' %}" alt="dr3">
+                <h5>Dr. Emily Johnson</h5>
+                <p>Pediatrician</p>
+                <p>Experience: 10 years</p>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 doctor-card">
+                <img src="{% static 'images/dr4.jpeg' %}" alt="dr4">
+                <h5>Dr. Emily Johnson</h5>
+                <p>Cardiologist</p>
+                <p>Experience: 10 years</p>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 doctor-card">
+                <img src="{% static 'images/dr5.jpeg' %}" alt="dr5">
+                <h5>Dr. Emily Johnson</h5>
+                <p>Urologist</p>
+                <p>Experience: 10 years</p>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 doctor-card">
+                <img src="{% static 'images/dr6.jpg' %}" alt="dr6">
+                <h5>Dr. Emily Johnson</h5>
+                <p>Physician</p>
+                <p>Experience: 10 years</p>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 doctor-card">
+                <img src="{% static 'images/dr7.jpg' %}" alt="dr7">
+                <h5>Dr. Emily Johnson</h5>
+                <p>Psychiatrist</p>
+                <p>Experience: 10 years</p>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 doctor-card">
+                <img src="{% static 'images/dr8.jpg' %}" alt="dr8">
+                <h5>Dr. Emily Johnson</h5>
+                <p>Dietition</p>
+                <p>Experience: 10 years</p>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 doctor-card">
+                <img src="{% static 'images/dr9.jpg' %}" alt="dr9">
+                <h5>Dr. Emily Johnson</h5>
+                <p>Pediatrician</p>
+                <p>Experience: 10 years</p>
+            </div>
+            <!-- Add more doctor cards here -->
+        </div>
+    </div>
+<br><br>
+<!-- doc images end -->
+<div class="row">
+    <div class="container-fluid " style="max-width: 80%; background-color: white;"> 
+        <div class="row" style="margin-left: -25px;"> 
+            <div class="col-12 doctors">
+                <h2 id="contact"> Support Services</h2>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-1 custom-div" style="background-color: rgb(251, 250, 255); padding: 10px;"> 
+                <img class="image-fluid" src="{% static 'images/clinical-laboratory-services.jpeg' %}" alt="Description of image">
+                <p style="flex: 1;">Amrita Clinical Laboratory Services 
+                    Offering the most comprehensive laboratory with the best advancements in technology.
+                </p> 
+            </div> 
+            <div class="col-lg-6 col-md-6 col-sm-12 custom-div" style="background-color:rgb(251, 250, 255); padding: 10px;"> 
+                <img class="image-fluid" src="{% static 'images/nursing.png' %}" alt="Description of image">
+                <p style="flex: 1;">Nursing Services.
+                    Delivering the best possible care and treatments to patients in a morally responsible and compassionate manner.                    
+                </p> 
+            </div>
+                
+        </div>
+        <div class="row" style="margin-left: -25px;"> 
+            <div class="col-lg-6 col-md-6 col-sm-12 custom-div" style="background-color:rgb(251, 250, 255);  padding: 10px;"> 
+                <img class="image-fluid" src="{% static 'images/Pharmacy.png' %}" alt="Description of image">
+                <p style="flex: 1;">Pharmacy.
+                  Our pharmaceutical services cater to the needs of outpatients and inpatients. 
+                </p> 
+            </div> 
+            <div class="col-lg-6 col-md-6 col-sm-12 custom-div" style="background-color: rgb(251, 250, 255);  padding: 10px;"> 
+                <img class="image-fluid" src="{% static 'images/Dietary.png' %}" alt="Description of image">
+                <p style="flex: 1;">
+                    Dietary.
+                    Skilled dieticians take care of your health by tending to its nutritional needs.
+                </p> 
+            </div>
+        </div>
+        <div class="row" style="margin-left: -25px;"> 
+            <div class="col-lg-6 col-md-6 col-sm-12 custom-div" style="background-color: rgb(251, 250, 255);  padding: 10px;"> 
+                <img class="image-fluid" src="{% static 'images/blood.png' %}" alt="Description of image">
+                <p style="flex: 1;">Transfusion Medicine / Blood Bank.
+                    We collect and test your blood samples and process hematopoietic stem cells with the utmost care and in a very responsible manner.                    
+                </p> 
+            </div> 
+            <div class="col-lg-6 col-md-6 col-sm-12 custom-div" style="background-color: rgb(251, 250, 255); padding: 10px;"> 
+                <img class="image-fluid" src="{% static 'images/centre.png' %}" alt="Description of image">
+                <p style="flex: 1;">
+                    The Center for Digital Health (CDH). 
+                    Facilitating multidisciplinary medical training of international caliber.                    
+                </p> 
+            </div>
+        </div>
+    </div>
+</div> <br><br>
+
+ <!-- stories -->
+ <div class="row">
+    <div class="col-12 doctors">
+        <h2 id="contact">Our Patient Strories</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="col justify-content-center">
+    <span class="arrow" id="left-arrow">&#9664;</span> 
+    <span class="arrow" id="right-arrow">&#9654;</span> 
+</div>
+</div>
+
+<div class="gallery-container">
+    <div class="gallery">
+        <div class="gallery-item">
+            <img src="{% static 'images/1MFP3gWOD5Y-HD.jpeg' %}" alt="avif-file 1">
+        </div>
+        <div class="gallery-item">
+            <img src="{% static 'images/Sm2IoYzkfaE-HD.jpeg' %}" alt="avif-file 2">
+        </div>
+        <div class="gallery-item">
+            <img src="{% static 'images/wVvPgaqnA24-HD.jpeg' %}" alt="avif-file 3">
+        </div>
+        <div class="gallery-item">
+            <img src="{% static 'images/1MFP3gWOD5Y-HD.jpeg' %}" alt="avif-file 3">
+        </div>
+    </div>
+</div>
+  <!-- end of stories -->
+
+</div>
+
+{% endblock %}
+        <!-- footer -->
+        <footer style="background-color: black; color: #f7eee3; padding: 20px;"> 
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-6 col-sm-12 "> 
+                    <div class="btn-group d-flex flex-column" role="group"> 
+                        <label for="exampleInputEmail1" class="form-label">Email address:</label>
+                        <button type="button" class="btn btn-light" style="border:1px solid white; background-color: black; color:white;">medication@aims.amrita.edu</button> 
+                    </div> 
+                    <div class="btn-group d-flex flex-column" role="group"> 
+                        <label for="exampleInputEmail1" class="form-label">Emergency:</label>
+                        <button type="button" class="btn btn-light" style="border:1px solid white; background-color: black; color:white;">+91-484-525496</button> 
+                    </div> 
+                </div>
+                  <div class="col-md-6 d-flex justify-content-end align-items-center">
+                    <a href="https://instagram.com" style="margin-right: 10px; color: white; font-size: x-large;">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://facebook.com" style="margin-right: 10px; color: white; font-size: x-large;">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://twitter.com" style="color: white; font-size: x-large;">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </div>                         
+              </div> <br><br><br> 
+              <div class="container">
+                  <div class="row">
+                      <div class="col-md-3 col-sm-6">
+                          <h5>For Patients</h5><br>
+                          <table style="width: 100%; border-collapse: collapse; color: white;">
+                              <tbody>
+                                  <tr>
+                                      <td style=" padding: 8px; text-align: left;"><a href="#"  style="color: white;  text-decoration: none;">Find a Doctor</a></td>
+                                  </tr>
+                                  <tr>
+                                    <td style=" padding: 8px; text-align: left;"><a href="#"  style="color: white;  text-decoration: none;">Patient Information</a></td>
+                                  </tr>
+                                  <tr>
+                                    <td style=" padding: 8px; text-align: left;"><a href="#"  style="color: white;  text-decoration: none;">Preparing for a Visit </a></td>
+                                  </tr>
+                                  <tr>
+                                    <td style=" padding: 8px; text-align: left;"><a href="#"  style="color: white;  text-decoration: none;">Patient Portal</a></td>
+
+                                  </tr>
+                                  <tr>
+                                    <td style=" padding: 8px; text-align: left;"><a href="#"  style="color: white;  text-decoration: none;">Patient Stories</a></td>
+
+                                  </tr>
+                                  <tr>
+                                    <td style=" padding: 8px; text-align: left;"><a href="#"  style="color: white;  text-decoration: none;">Reports
+                                        </a></td>
+
+                                  </tr>
+                                  <tr>
+                                    <td style=" padding: 8px; text-align: left;"><a href="#"  style="color: white;  text-decoration: none;">General Appointment</a></td>
+
+                                  </tr>
+
+
+                              </tbody>
+                          </table>
+                      </div>
+                      <div class="col-md-3 col-sm-6">
+                          <h5>Center of Excellence</h5><br>
+                          <table style="width: 100%; border-collapse: collapse; border: none; color: white;  text-decoration: none;">
+                              <tbody>
+                                  <tr>
+                                      <td style=" padding: 8px; text-align: left;"><a href="#" style=" color: white;  text-decoration: none;"> Cancer Centre</a></td>
+                                  </tr>
+                                  <tr>
+                                      <td style=" padding: 8px; text-align: left;"><a href="#" style=" color: white;  text-decoration: none;">Digestive Diseases</a></td>
+                                  </tr>
+                                  <tr>
+                                    <td style=" padding: 8px; text-align: left;"><a href="#" style=" color: white;  text-decoration: none;">Child Development Centre</a></td>
+                                  </tr>
+                                  <tr>
+                                    <td style=" padding: 8px; text-align: left;"><a href="#" style=" color: white;  text-decoration: none;">Vitreo Retinal Surgery</a></td>
+                                  </tr>
+                                  <tr>
+                                    <td style=" padding: 8px; text-align: left;"><a href="#" style=" color: white;  text-decoration: none;"> Centre for Neurosciences</a></td>
+                                  </tr>
+                                  <tr>
+                                    <td style=" padding: 8px; text-align: left;"><a href="#" style=" color: white;  text-decoration: none;"> Paripoorna</a>/td>
+                                  </tr>
+                                  <tr>
+                                    <td style=" padding: 8px; text-align: left;"><a href="#" style=" color: white;  text-decoration: none;"> Amrita Telemedicine Services</a>/td>
+                                  </tr>
+
+                              </tbody>
+                          </table>
+                      </div>
+                      <div class="col-md-3 col-sm-6">
+                          <h5>Fellowship Programs</h5><br>
+                          <table style="width: 100%; border-collapse: collapse; color: white; border: none;">
+                              <tbody>
+                                  <tr>
+                                      <td style=" padding: 8px; text-align: left;"><a href="#" style=" color: white;  text-decoration: none;">
+                                        Pediatric Critical Care</a></td>
+                                  </tr>
+                                  <tr>
+                                      <td style=" padding: 8px; text-align: left;"><a href="#" style=" color: white;  text-decoration: none;"> Radiology</a></td>
+                                  </tr>
+                                  <tr>
+                                    <td style=" padding: 8px; text-align: left;"><a href="#" style=" color: white;  text-decoration: none;">Diabetic Foot</a></td>
+                                  </tr>
+                                  <tr>
+                                    <td style=" padding: 8px; text-align: left;"><a href="#" style="color: white;  text-decoration: none;"> Fetal Medicine</a></td>
+                                  </tr>
+                                  <tr>
+                                    <td style=" padding: 8px; text-align: left;"><a href="#" style="color: white;  text-decoration: none;">Obstetric Ultrasound</a></td>
+                                  </tr>
+                                  <tr>
+                                    <td style=" padding: 8px; text-align: left;"><a href="#" style="color: white;  text-decoration: none;">Pediatric Neurosurgery</a></td>
+                                </tr>
+                                <tr>
+                                    <td style=" padding: 8px; text-align: left;"><a href="#" style="color: white;  text-decoration: none;">Refer a friend</a></td>
+                                </tr>
+
+                              </tbody>
+                          </table>
+                      </div>
+                      <div class="col-md-3 col-sm-6">
+                          <h5>Corporats</h5><br>
+                          <table style="width: 100%; border-collapse: collapse; color: white; border: none;">
+                              <tbody>
+                                  <tr>
+                                      <td style="padding: 8px; text-align: left;"><a href="#"  style="color: white;  text-decoration: none;">About Us</a></td>
+                                  </tr>
+                                  <tr>
+                                      <td style=" padding: 8px; text-align: left;"><a href="#"  style="color: white;  text-decoration: none;">Contact Us</a></td>
+                                  </tr>
+                                  <tr>
+                                    <td style=" padding: 8px; text-align: left;"><a href="#"  style="color: white;  text-decoration: none;">FAQs</a></td>
+                                  </tr>
+                                  <tr>
+                                    <td style=" padding: 8px; text-align: left;"><a href="#"  style="color: white;  text-decoration: none;">Saturday-Sunday 12pm to 3pm</a></td>
+                                  </tr>
+
+
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          </footer> 
+          </div>
+         <!-- footer end -->
+</div>
+
+
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  </body>
+</html> 

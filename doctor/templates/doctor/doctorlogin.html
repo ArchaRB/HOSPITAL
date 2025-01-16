@@ -1,0 +1,498 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    {% load static %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+
+
+<style>
+  
+ 
+    .doclogin{
+        padding-bottom: 170px;
+        padding-top: 50px;
+        background-color: lightsteelblue;
+    }
+.container {
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+h2 {
+  font-size: 26px;
+  margin: 20px 0;
+  text-align: center;
+  small {
+    font-size: 0.5em;
+  }
+}
+
+.responsive-table {
+  li {
+    border-radius: 3px;
+    padding: 25px 30px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+  }
+  .table-header {
+    background-color: #95A5A6;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+  .table-row {
+    background-color: #ffffff;
+    box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.1);
+  }
+  .col-1 {
+    flex-basis: 10%;
+  }
+  .col-2 {
+    flex-basis: 40%;
+  }
+  .col-3 {
+    flex-basis: 25%;
+  }
+  .col-4 {
+    flex-basis: 25%;
+  }
+  
+  @media all and (max-width: 767px) {
+    .table-header {
+      display: none;
+    }
+   
+    
+    li {
+      display: block;
+    }
+    .col {
+      
+      flex-basis: 100%;
+      
+    }
+    .col {
+      display: flex;
+      padding: 10px 0;
+      &:before {
+        color: #6C7A89;
+        padding-right: 10px;
+        content: attr(data-label);
+        flex-basis: 50%;
+        text-align: right;
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+   
+</style>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  </head>
+  <body>
+<div class="container-fluid">
+    
+    
+            <!-- navbar -->
+<div class="row">
+    <div class="col-12">
+      <nav class="navbar navbar-expand-lg " style="font-size: 20px; background-color: white;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><img src="{% static 'images/AMRITA HOSPITALS logo.png' %}" alt="" style="height: 100px; width: 100px;"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCombined" aria-controls="navbarCombined" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCombined" style="font-weight: 490;">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'patient:home' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Find a Doctor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Our Departments</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'patient:list' %}">Booking Confirmation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'doctor:doctorlogin' %}" style="color: rgb(75, 73, 73);">Doctors Login</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'patient:login' %}"style="margin-top:10px;">Patient Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <!--  -->
+                         <button class="custom-btn"><a class="nav-link" href="{% url 'patient:booking' %}" style="font-weight: 700;">Book Appointment</a></button>
+                    </li>
+                </ul>
+            </div>
+    </nav>
+    </div>
+    </div>
+<!-- navbar end -->
+     {% block content %}
+     <div class="row doclogin">
+        <div class="col-4"></div>
+        <div class="col-4">
+            <h1 align="center">Login</h1>
+            <form method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Name</label>
+                  <input type="text" name="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">Password</label>
+                  <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">{{msg}}</label>
+                  </div>
+                
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
+        </div>
+        <div class="col-4"></div>
+    </div>
+     {% endblock %}
+     <!-- footer -->
+              <!-- footer -->
+              <footer style="background-color: black; color: #f7eee3; padding: 20px;">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-6 col-sm-12 "> 
+                        <div class="btn-group d-flex flex-column" role="group"> 
+                            <label for="exampleInputEmail1" class="form-label">Email address:</label>
+                            <button type="button" class="btn btn-light" style="border:1px solid white; background-color: black; color:white;">medication@aims.amrita.edu</button> 
+                        </div> 
+                        <div class="btn-group d-flex flex-column" role="group"> 
+                            <label for="exampleInputEmail1" class="form-label">Emergency:</label>
+                            <button type="button" class="btn btn-light" style="border:1px solid white; background-color: black; color:white;">+91-484-525496</button> 
+                        </div> 
+                    </div>
+                      <div class="col-md-6 d-flex justify-content-end align-items-center">
+                        <a href="https://instagram.com" style="margin-right: 10px; color: white; font-size: x-large;">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://facebook.com" style="margin-right: 10px; color: white; font-size: x-large;">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://twitter.com" style="color: white; font-size: x-large;">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>                         
+                  </div> <br><br><br> 
+                  <div class="container">
+                      <div class="row">
+                          <div class="col-md-3 col-sm-6">
+                              <h5>For Patients</h5><br>
+                              <table style="width: 100%; border-collapse: collapse; color: white;">
+                                  <tbody>
+                                      <tr>
+                                          <td style=" padding: 8px; text-align: left;"><a href="#"  style="color: white;  text-decoration: none;">Find a Doctor</a></td>
+                                      </tr>
+                                      <tr>
+                                        <td style=" padding: 8px; text-align: left;"><a href="#"  style="color: white;  text-decoration: none;">Patient Information</a></td>
+                                      </tr>
+                                      <tr>
+                                        <td style=" padding: 8px; text-align: left;"><a href="#"  style="color: white;  text-decoration: none;">Preparing for a Visit </a></td>
+                                      </tr>
+                                      <tr>
+                                        <td style=" padding: 8px; text-align: left;"><a href="#"  style="color: white;  text-decoration: none;">Patient Portal</a></td>
+    
+                                      </tr>
+                                      <tr>
+                                        <td style=" padding: 8px; text-align: left;"><a href="#"  style="color: white;  text-decoration: none;">Patient Stories</a></td>
+    
+                                      </tr>
+                                      <tr>
+                                        <td style=" padding: 8px; text-align: left;"><a href="#"  style="color: white;  text-decoration: none;">Reports
+                                            </a></td>
+    
+                                      </tr>
+                                      <tr>
+                                        <td style=" padding: 8px; text-align: left;"><a href="#"  style="color: white;  text-decoration: none;">General Appointment</a></td>
+    
+                                      </tr>
+    
+    
+                                  </tbody>
+                              </table>
+                          </div>
+                          <div class="col-md-3 col-sm-6">
+                              <h5>Center of Excellence</h5><br>
+                              <table style="width: 100%; border-collapse: collapse; border: none; color: white;  text-decoration: none;">
+                                  <tbody>
+                                      <tr>
+                                          <td style=" padding: 8px; text-align: left;"><a href="#" style=" color: white;  text-decoration: none;"> Cancer Centre</a></td>
+                                      </tr>
+                                      <tr>
+                                          <td style=" padding: 8px; text-align: left;"><a href="#" style=" color: white;  text-decoration: none;">Digestive Diseases</a></td>
+                                      </tr>
+                                      <tr>
+                                        <td style=" padding: 8px; text-align: left;"><a href="#" style=" color: white;  text-decoration: none;">Child Development Centre</a></td>
+                                      </tr>
+                                      <tr>
+                                        <td style=" padding: 8px; text-align: left;"><a href="#" style=" color: white;  text-decoration: none;">Vitreo Retinal Surgery</a></td>
+                                      </tr>
+                                      <tr>
+                                        <td style=" padding: 8px; text-align: left;"><a href="#" style=" color: white;  text-decoration: none;"> Centre for Neurosciences</a></td>
+                                      </tr>
+                                      <tr>
+                                        <td style=" padding: 8px; text-align: left;"><a href="#" style=" color: white;  text-decoration: none;"> Paripoorna</a>/td>
+                                      </tr>
+                                      <tr>
+                                        <td style=" padding: 8px; text-align: left;"><a href="#" style=" color: white;  text-decoration: none;"> Amrita Telemedicine Services</a>/td>
+                                      </tr>
+    
+                                  </tbody>
+                              </table>
+                          </div>
+                          <div class="col-md-3 col-sm-6">
+                              <h5>Fellowship Programs</h5><br>
+                              <table style="width: 100%; border-collapse: collapse; color: white; border: none;">
+                                  <tbody>
+                                      <tr>
+                                          <td style=" padding: 8px; text-align: left;"><a href="#" style=" color: white;  text-decoration: none;">
+                                            Pediatric Critical Care</a></td>
+                                      </tr>
+                                      <tr>
+                                          <td style=" padding: 8px; text-align: left;"><a href="#" style=" color: white;  text-decoration: none;"> Radiology</a></td>
+                                      </tr>
+                                      <tr>
+                                        <td style=" padding: 8px; text-align: left;"><a href="#" style=" color: white;  text-decoration: none;">Diabetic Foot</a></td>
+                                      </tr>
+                                      <tr>
+                                        <td style=" padding: 8px; text-align: left;"><a href="#" style="color: white;  text-decoration: none;"> Fetal Medicine</a></td>
+                                      </tr>
+                                      <tr>
+                                        <td style=" padding: 8px; text-align: left;"><a href="#" style="color: white;  text-decoration: none;">Obstetric Ultrasound</a></td>
+                                      </tr>
+                                      <tr>
+                                        <td style=" padding: 8px; text-align: left;"><a href="#" style="color: white;  text-decoration: none;">Pediatric Neurosurgery</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td style=" padding: 8px; text-align: left;"><a href="#" style="color: white;  text-decoration: none;">Refer a friend</a></td>
+                                    </tr>
+    
+                                  </tbody>
+                              </table>
+                          </div>
+                          <div class="col-md-3 col-sm-6">
+                              <h5>Corporats</h5><br>
+                              <table style="width: 100%; border-collapse: collapse; color: white; border: none;">
+                                  <tbody>
+                                      <tr>
+                                          <td style="padding: 8px; text-align: left;"><a href="#"  style="color: white;  text-decoration: none;">About Us</a></td>
+                                      </tr>
+                                      <tr>
+                                          <td style=" padding: 8px; text-align: left;"><a href="#"  style="color: white;  text-decoration: none;">Contact Us</a></td>
+                                      </tr>
+                                      <tr>
+                                        <td style=" padding: 8px; text-align: left;"><a href="#"  style="color: white;  text-decoration: none;">FAQs</a></td>
+                                      </tr>
+                                      <tr>
+                                        <td style=" padding: 8px; text-align: left;"><a href="#"  style="color: white;  text-decoration: none;">Saturday-Sunday 12pm to 3pm</a></td>
+                                      </tr>
+    
+    
+                                  </tbody>
+                              </table>
+                          </div>
+                      </div>
+                  </div>
+              </footer>
+              </div>
+             <!-- footer end -->
+    <!-- footer end -->
+</div>
+  
+    
+        <!-- footer -->
+        <footer style="background-color: black; color: #f7eee3; padding: 20px;">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-6 col-sm-12 "> 
+                  <div class="btn-group d-flex flex-column" role="group"> 
+                      <label for="exampleInputEmail1" class="form-label">Email address:</label>
+                      <button type="button" class="btn btn-light" style="border:1px solid white; background-color: black; color:white;">medication@aims.amrita.edu</button> 
+                  </div> 
+                  <div class="btn-group d-flex flex-column" role="group"> 
+                      <label for="exampleInputEmail1" class="form-label">Emergency:</label>
+                      <button type="button" class="btn btn-light" style="border:1px solid white; background-color: black; color:white;">+91-484-525496</button> 
+                  </div> 
+              </div>
+                <div class="col-md-6 d-flex justify-content-end align-items-center">
+                  <a href="https://instagram.com" style="margin-right: 10px; color: white; font-size: x-large;">
+                      <i class="fab fa-instagram"></i>
+                  </a>
+                  <a href="https://facebook.com" style="margin-right: 10px; color: white; font-size: x-large;">
+                      <i class="fab fa-facebook-f"></i>
+                  </a>
+                  <a href="https://twitter.com" style="color: white; font-size: x-large;">
+                      <i class="fab fa-twitter"></i>
+                  </a>
+              </div>                         
+            </div> <br><br><br> 
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 col-sm-6">
+                        <h5>For Patients</h5><br>
+                        <table style="width: 100%; border-collapse: collapse; color: white;">
+                            <tbody>
+                                <tr>
+                                    <td style=" padding: 8px; text-align: left;"><a href="#"  style="color: white;  text-decoration: none;">Find a Doctor</a></td>
+                                </tr>
+                                <tr>
+                                  <td style=" padding: 8px; text-align: left;"><a href="#"  style="color: white;  text-decoration: none;">Patient Information</a></td>
+                                </tr>
+                                <tr>
+                                  <td style=" padding: 8px; text-align: left;"><a href="#"  style="color: white;  text-decoration: none;">Preparing for a Visit </a></td>
+                                </tr>
+                                <tr>
+                                  <td style=" padding: 8px; text-align: left;"><a href="#"  style="color: white;  text-decoration: none;">Patient Portal</a></td>
+
+                                </tr>
+                                <tr>
+                                  <td style=" padding: 8px; text-align: left;"><a href="#"  style="color: white;  text-decoration: none;">Patient Stories</a></td>
+
+                                </tr>
+                                <tr>
+                                  <td style=" padding: 8px; text-align: left;"><a href="#"  style="color: white;  text-decoration: none;">Reports
+                                      </a></td>
+
+                                </tr>
+                                <tr>
+                                  <td style=" padding: 8px; text-align: left;"><a href="#"  style="color: white;  text-decoration: none;">General Appointment</a></td>
+
+                                </tr>
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <h5>Center of Excellence</h5><br>
+                        <table style="width: 100%; border-collapse: collapse; border: none; color: white;  text-decoration: none;">
+                            <tbody>
+                                <tr>
+                                    <td style=" padding: 8px; text-align: left;"><a href="#" style=" color: white;  text-decoration: none;"> Cancer Centre</a></td>
+                                </tr>
+                                <tr>
+                                    <td style=" padding: 8px; text-align: left;"><a href="#" style=" color: white;  text-decoration: none;">Digestive Diseases</a></td>
+                                </tr>
+                                <tr>
+                                  <td style=" padding: 8px; text-align: left;"><a href="#" style=" color: white;  text-decoration: none;">Child Development Centre</a></td>
+                                </tr>
+                                <tr>
+                                  <td style=" padding: 8px; text-align: left;"><a href="#" style=" color: white;  text-decoration: none;">Vitreo Retinal Surgery</a></td>
+                                </tr>
+                                <tr>
+                                  <td style=" padding: 8px; text-align: left;"><a href="#" style=" color: white;  text-decoration: none;"> Centre for Neurosciences</a></td>
+                                </tr>
+                                <tr>
+                                  <td style=" padding: 8px; text-align: left;"><a href="#" style=" color: white;  text-decoration: none;"> Paripoorna</a>/td>
+                                </tr>
+                                <tr>
+                                  <td style=" padding: 8px; text-align: left;"><a href="#" style=" color: white;  text-decoration: none;"> Amrita Telemedicine Services</a>/td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <h5>Fellowship Programs</h5><br>
+                        <table style="width: 100%; border-collapse: collapse; color: white; border: none;">
+                            <tbody>
+                                <tr>
+                                    <td style=" padding: 8px; text-align: left;"><a href="#" style=" color: white;  text-decoration: none;">
+                                      Pediatric Critical Care</a></td>
+                                </tr>
+                                <tr>
+                                    <td style=" padding: 8px; text-align: left;"><a href="#" style=" color: white;  text-decoration: none;"> Radiology</a></td>
+                                </tr>
+                                <tr>
+                                  <td style=" padding: 8px; text-align: left;"><a href="#" style=" color: white;  text-decoration: none;">Diabetic Foot</a></td>
+                                </tr>
+                                <tr>
+                                  <td style=" padding: 8px; text-align: left;"><a href="#" style="color: white;  text-decoration: none;"> Fetal Medicine</a></td>
+                                </tr>
+                                <tr>
+                                  <td style=" padding: 8px; text-align: left;"><a href="#" style="color: white;  text-decoration: none;">Obstetric Ultrasound</a></td>
+                                </tr>
+                                <tr>
+                                  <td style=" padding: 8px; text-align: left;"><a href="#" style="color: white;  text-decoration: none;">Pediatric Neurosurgery</a></td>
+                              </tr>
+                              <tr>
+                                  <td style=" padding: 8px; text-align: left;"><a href="#" style="color: white;  text-decoration: none;">Refer a friend</a></td>
+                              </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <h5>Corporats</h5><br>
+                        <table style="width: 100%; border-collapse: collapse; color: white; border: none;">
+                            <tbody>
+                                <tr>
+                                    <td style="padding: 8px; text-align: left;"><a href="#"  style="color: white;  text-decoration: none;">About Us</a></td>
+                                </tr>
+                                <tr>
+                                    <td style=" padding: 8px; text-align: left;"><a href="#"  style="color: white;  text-decoration: none;">Contact Us</a></td>
+                                </tr>
+                                <tr>
+                                  <td style=" padding: 8px; text-align: left;"><a href="#"  style="color: white;  text-decoration: none;">FAQs</a></td>
+                                </tr>
+                                <tr>
+                                  <td style=" padding: 8px; text-align: left;"><a href="#"  style="color: white;  text-decoration: none;">Saturday-Sunday 12pm to 3pm</a></td>
+                                </tr>
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        </div>
+       <!-- footer end -->
+</div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html> 
+  
+   
+   

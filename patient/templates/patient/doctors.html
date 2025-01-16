@@ -1,0 +1,96 @@
+{% extends 'patient/home.html' %}
+{% block content %}
+{% load static %}
+
+<div class="row">
+    <div class="row justify-content-center" style="margin-top: 3rem;">
+        <div class="col-md-6">
+            <div style="padding: 2rem; box-shadow: 0 4px 8px rgba(0,0,0,0.1); border-radius: 10px; background-color: #f8f9fa;">
+                <form method="get" action="{% url 'patient:search_doctors' %}" style="text-align: center;">
+                    <h2 style="margin-bottom: 1.5rem;">Search for Doctors</h2>
+                    <input type="text" name="q" style="width: 100%; height: 45px; font-size: 16px; border-radius: 5px; border: 1px solid #ced4da; padding: 10px; margin-bottom: 1rem;" placeholder="Search by name or specialization">
+                    <button type="submit" style="font-size: 16px; padding: 10px 20px; border-radius: 5px; background-color: #007bff; color: white; border: none;">Search</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="container center-container" >
+        <h1>Search Results</h1> 
+        <ul> {% for doctor in doctors %} 
+            <li>
+                <div class="col-lg-4 col-md-6 col-sm-12 doctor-card">
+                    <img src="{{ doctor.image.url }}" alt="{{ doctor.name }}">
+                    <h5>Dr.<a href="#" style="color: black; text-decoration: underline;">{{ doctor.name }} </a></h5>
+                    <p>{{ doctor.specialization }}</p>
+                    <p>Experience: 15 years</p>
+                </div>
+            </li> 
+            {% empty %} 
+            <li>
+                No doctors found.
+            </li> 
+            {% endfor %} 
+        </ul>
+    </div>
+        <div class="container center-container" >
+            <div class="row justify-content-center">
+                <div class="col-lg-4 col-md-6 col-sm-12 doctor-card">
+                    <img src="{% static 'images/dr1.jpg' %}" alt="Doctor 1">
+                    <h5>Dr. John Doe</h5>
+                    <p>Cardiologist</p>
+                    <p>Experience: 15 years</p>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 doctor-card">
+                    <img src="{% static 'images/dr2.jpeg' %}" alt="Doctor 2">
+                    <h5>Dr. Jane Smith</h5>
+                    <p>Neurologist</p>
+                    <p>Experience: 12 years</p>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 doctor-card">
+                    <img src="{% static 'images/dr3.jpeg' %}" alt="dr3">
+                    <h5>Dr. Emily Johnson</h5>
+                    <p>Pediatrician</p>
+                    <p>Experience: 10 years</p>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 doctor-card">
+                    <img src="{% static 'images/dr4.jpeg' %}" alt="dr4">
+                    <h5>Dr. Emily Johnson</h5>
+                    <p>Cardiologist</p>
+                    <p>Experience: 10 years</p>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 doctor-card">
+                    <img src="{% static 'images/dr5.jpeg' %}" alt="dr5">
+                    <h5>Dr. Emily Johnson</h5>
+                    <p>Urologist</p>
+                    <p>Experience: 10 years</p>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 doctor-card">
+                    <img src="{% static 'images/dr6.jpg' %}" alt="dr6">
+                    <h5>Dr. Emily Johnson</h5>
+                    <p>Physician</p>
+                    <p>Experience: 10 years</p>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 doctor-card">
+                    <img src="{% static 'images/dr7.jpg' %}" alt="dr7">
+                    <h5>Dr. Emily Johnson</h5>
+                    <p>Psychiatrist</p>
+                    <p>Experience: 10 years</p>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 doctor-card">
+                    <img src="{% static 'images/dr8.jpg' %}" alt="dr8">
+                    <h5>Dr. Emily Johnson</h5>
+                    <p>Dietition</p>
+                    <p>Experience: 10 years</p>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 doctor-card">
+                    <img src="{% static 'images/dr9.jpg' %}" alt="dr9">
+                    <h5>Dr. Emily Johnson</h5>
+                    <p>Pediatrician</p>
+                    <p>Experience: 10 years</p>
+                </div>
+                <!-- Add more doctor cards here -->
+            </div>
+        </div>
+    </div>
+{% endblock %}

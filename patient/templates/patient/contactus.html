@@ -1,0 +1,38 @@
+{% extends 'patient/home.html' %}
+{% block content %}
+{% load static %}
+<!-- contact -->
+<div class="row justify-content-center my-5">
+    <div class="col-auto">
+        <img src="{% static 'images/contact.jpg' %}" alt="conclave" class="img-fluid" >
+
+    </div>
+
+</div>
+<div class="row">
+    <div class="col-12 doctors">
+        <h2 id="contact">Contact Us</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-3 col-sm-1"></div>
+    <div class="col-md-6 col-sm-10">
+        <form>
+            <div class="mb-3 col-sm-12">
+              <label for="exampleInputEmail1" class="form-label">Email address</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+              <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            </div>
+             <div class="mb-3 col-sm-12"> 
+                <label for="exampleInputEmail1" class="form-label">Enter Your Message Here</label> 
+                <textarea style="width: 100%; height: 200px; @media (max-width: 576px) { height: 150px; }" class="form-control" id="exampleInputEmail1" rows="10" placeholder="Enter Your Message Here">
+
+                </textarea>              
+            </div>             
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+    </div>
+    <div class="col-md-3 col-sm-1"></div>
+</div>
+<!-- contact end -->
+ {% endblock %}
