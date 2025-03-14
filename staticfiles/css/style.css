@@ -1,0 +1,195 @@
+
+.body {
+  font-family: "Raleway", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}  
+         .row{
+              --bs-gutter-x: -0.5rem;
+          }
+          .heading,.doctors{
+              display: flex;
+              justify-content: center;
+              align-items: center;
+          }
+          .aboutus h2,.aboutus p{
+              text-align: center;
+          }
+          .aboutus p{
+              font-weight: bolder;
+              font-size: 20px;
+          }
+          .col-12{
+              border-radius: 10px;
+          }
+          .doctors{
+              margin-top: 15px;
+          }
+          .loginhead{
+              margin-bottom: 20px;
+          }
+          .logincontent{
+              margin-bottom: 50px;
+          }
+          .loginrow{
+              background-color: rgb(33, 125, 132);
+            }
+            .loginrow h2,.loginrow label,.loginrow p{
+                color: white;
+            }
+            .logincontent a{
+                font-size: 20px;
+                color: aliceblue;
+                font-weight: bold;
+            }
+            .signuprow{
+                background-color: rgb(18, 110, 70);
+            }
+            .signuprow h2,.signuprow label{
+                color: whitesmoke;
+            }
+            .booking{
+                margin-bottom: 90px;
+            }
+            .bookingrow{
+                background-color: rgb(73, 108, 112);
+                
+            }
+            #navbarCombined a {
+                color: black;
+                font-size: 17px;
+            }
+    
+  @media (max-width: 767px) {
+        .navbar-nav {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .navbar-nav .nav-item {
+            margin-left: 0;
+        }
+    }
+
+    .carousel-item { 
+        position: relative; 
+      } 
+    .carousel-item img { 
+        animation: zoom 10s ease-in-out infinite; 
+      } 
+      @keyframes zoom { 
+        0% { 
+          transform: scale(1); 
+        } 50% { 
+          transform: scale(1.1); 
+        } 
+        100% { 
+          transform: scale(1); 
+        } 
+      } 
+      @media (max-width: 576px) {
+         .carousel-caption  p { 
+            font-size: 20px; 
+        } 
+    }
+        .carousel-caption {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-80%);
+            text-align: left;
+            padding-left: 20px;
+            color: #aaafe7;
+        }
+        .carousel-caption p {
+            font-size: 35px;
+        }
+        .carousel-caption a {
+            color: white;
+        }
+        .carousel-caption a .fas {
+            color: #aaafe7;
+            margin-left: 250px;
+        }
+        @media (max-width: 576px) {
+            .carousel-caption p {
+                font-size: 20px;  /* Adjust the font size for smaller screens */
+            }
+        }
+        @media (min-width: 577px) and (max-width: 768px) {
+            .carousel-caption p {
+                font-size: 30px;  /* Adjust the font size for medium screens */
+            }
+        }
+        @media (min-width: 769px) and (max-width: 992px) {
+            .carousel-caption p {
+                font-size: 32px;  /* Adjust the font size for large screens */
+            }
+        }
+        @media (min-width: 993px) {
+            .carousel-caption p {
+                font-size: 35px;  /* Default font size for extra-large screens */
+            }
+        }
+
+      .custome-div{
+       width: 50%;
+       justify-content: center;
+       display: flex;
+      }
+      .custom-btn { 
+        background-color: white; 
+        border-radius: 50px; /* Adjust this value to make the corners more or less curly */ 
+        padding: 5px 15px; 
+        color: #000; 
+        border: 2px solid #000; 
+        margin-top: 7px;
+    }
+    .custom-div { 
+        /* padding: 10px; 
+        margin: 10px 0;  */
+        background-color: white;
+        border: none;
+        display: flex;
+        align-items: center;
+        font-weight: 500;
+        border: 1px solid white; 
+
+    }
+    .custom-div img{
+        max-width: 100%;
+        width: 210px;
+        height: 250px; /* Limits the image width to 50% of its parent container */  
+        margin-right: 20px; /* Adds space between the image and the paragraph */ 
+
+    }
+    .doctor-card {
+        background-color: #fff;
+        border: 1px solid #dee2e6;
+        /* border-radius: 10px; */
+        padding: 20px;
+        margin: 10px;
+        text-align: center;
+    }
+    .doctor-card img {
+        max-width: 200px;
+        margin-bottom: 10px;
+
+    }
+    .doctor-card h5 {
+        margin: 10px 0 5px;
+    }
+    .doctor-card p {
+        margin: 0;
+    }
+
+    .btn-group .btn { 
+        font-size: 20px; width: 100%; /* Make buttons take full width of their container */ 
+        margin-bottom: 10px; /* Add spacing between buttons */ 
+    } 
+    @media (max-width: 576px) { 
+        .btn-group .btn { 
+            font-size: 16px; /* Adjust font size for smaller screens */ 
+        } 
+    }
+

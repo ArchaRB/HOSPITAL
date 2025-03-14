@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-et)zq8si3+ax5-lg!szp$_b*b6e%nm$d65sfb*2l&$loeo5f)z
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 # session expireation
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
@@ -48,6 +48,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -79,7 +80,7 @@ WSGI_APPLICATION = 'Hospital_administration.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
-
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -90,7 +91,13 @@ DATABASES = {
         'PORT' : '5432'
     }
 }
+'''
 
+import dj_database_url
+
+DATABASES = {
+    'default' : dj_database_url.parse('postgresql://amritadb_user:adZ7wKNvFvkvlV8XzLIF2iChykxJpTJC@dpg-cv9tjftumphs73abb9ug-a.oregon-postgres.render.com/amritadb')
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -135,6 +142,9 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
+
+STATIC_ROOT = BASE_DIR / "staticfiles"
+STATICFILES_STORAGE="whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # Add these lines if they are not already present
 MEDIA_URL = '/media/'

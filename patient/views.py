@@ -48,8 +48,8 @@ def List(request):
         return render(request, 'patient/list.html', {'patients': patients}) 
      else: 
          return redirect('patient:login')
-    # patients = Appointment.objects.filter(status='confirmed')
-    # return render(request, 'patient/list.html', {'patients': patients})
+#     patients = Appointment.objects.filter(status='confirmed')
+#     return render(request, 'patient/list.html', {'patients': patients})
 
 # def confirm_appointment(appointment):
 #     appointment.status = 'confirmed'
